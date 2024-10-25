@@ -25,4 +25,3 @@ let parsed_deck = parse_url(&url).unwrap();
 assert_eq!(deck, parsed_deck);
 ```
 
-License: MIT OR Apache-2.0
