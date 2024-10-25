@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 authors = ["lilacgrimoire@gmail.com"]
 description = "A parser for YGOPro deck URLs in the YDKE format"
-repository = "https://github.com/Satellaa/ydke_parse"
+repository = "https://github.com/Satellaa/ydke_parser"
 license = "MIT OR Apache-2.0"
-keywords = ["yugioh", "ygopro", "deck", "parser", "url"]
+keywords = ["yugioh", "ygopro", "parser"]
 categories = ["parser-implementations", "games"]
 readme = "README.md"
 
