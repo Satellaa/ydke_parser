@@ -12,9 +12,13 @@ name: rust-clippy analyze
 on:
   push:
     branches: [ "dev" ]
+    paths:
+      - '**.rs'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "dev" ]
+    paths:
+      - '**.rs'
   schedule:
     - cron: '41 17 * * 2'
 
