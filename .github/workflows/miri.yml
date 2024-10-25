@@ -1,0 +1,45 @@
+name: Miri Tests
+
+on:
+  push:
+    branches: [ dev ]
+    paths:
+      - '**.rs'
+  pull_request:
+    branches: [ dev ]
+    paths:
+      - '**.rs'
+
+jobs:
+  test:
+    name: Test on ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [
+          # Little-endian targets
+          'x86_64-unknown-linux-gnu',
+          'i686-pc-windows-msvc',
+          # Big-endian targets
+          's390x-unknown-linux-gnu',
+        ]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Miri
+        run: |
+          rustup toolchain install nightly --component miri
+          rustup override set nightly
+          cargo miri setup
+      
+      - name: Run Miri tests
+        run: cargo miri test --target ${{ matrix.target }}
+
+  status:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check status
+        run: echo "All platform tests passed!"
