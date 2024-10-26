@@ -24,7 +24,7 @@ let url1 = "ydke://y+iNAd3uOQI=!/rTFAw==!3e45Ag==!";
 let url2 = to_url(&deck);
 
 // Parse the URL back into a deck
-let parsed_deck1 = parse_url(&url2).unwrap();
+let parsed_deck1 = parse_url(&url1).unwrap();
 let parsed_deck2 = parse_url(&url2).unwrap();
 assert_eq!(deck, parsed_deck1);
 assert_eq!(deck, parsed_deck2);
