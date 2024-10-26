@@ -1,11 +1,13 @@
+[![](https://img.shields.io/crates/v/ydke_parser.svg)](https://crates.io/crates/ydke_parser)
 ![Maintenance](https://img.shields.io/badge/maintenance-activly--developed-brightgreen.svg)
 [![Tests](https://img.shields.io/github/actions/workflow/status/Satellaa/ydke_parser/miri.yml)](https://github.com/Satellaa/ydke_parser/actions)
+[![Docs](https://docs.rs/ydke_parser/badge.svg)](https://docs.rs/ydke_parser)
 
 # ydke_parser
 
 A crate for parsing and generating YGOPro deck URLs in the YDKE format.
 
-## Examples
+## Example
 
 ```rust
 use ydke_parser::{Deck, parse_url, to_url};
