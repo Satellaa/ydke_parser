@@ -1,6 +1,6 @@
 /// Extracts all YDKE URLs from a string.
 /// 
-/// # Examples
+/// # Example
 /// 
 /// ```
 /// use ydke_parser::extract_urls;
