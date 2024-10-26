@@ -17,11 +17,14 @@ let deck = Deck {
     side: vec![37351133],
 };
 
+let url1 = "ydke://y+iNAd3uOQI=!/rTFAw==!3e45Ag==!";
 // Convert to URL
-let url = to_url(&deck);
+let url2 = to_url(&deck);
 
 // Parse the URL back into a deck
-let parsed_deck = parse_url(&url).unwrap();
-assert_eq!(deck, parsed_deck);
+let parsed_deck1 = parse_url(&url2).unwrap();
+let parsed_deck2 = parse_url(&url2).unwrap();
+assert_eq!(deck, parsed_deck1);
+assert_eq!(deck, parsed_deck2);
 ```
 
