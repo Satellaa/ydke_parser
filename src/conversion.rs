@@ -57,7 +57,7 @@ fn passcodes_to_base64(passcodes: &[u32]) -> String {
 
 /// Parses a YDKE URL into a Deck structure.
 /// 
-/// # Examples
+/// # Example
 /// 
 /// ```
 /// use ydke_parser::parse_url;
@@ -86,9 +86,29 @@ pub fn parse_url(ydke: &str) -> Result<Deck, YdkeError> {
     })
 }
 
+/// Parses multiple YDKE URLs into a vector of Deck structures.
+/// 
+/// # Example
+/// 
+/// ```
+/// use ydke_parser::parse_urls;
+/// 
+/// let urls = &[
+///     "ydke://F/8hCg==!!!",
+///     "ydke://y+iNAQ==!!!"
+/// ];
+/// let decks = parse_urls(urls).unwrap();
+/// assert_eq!(decks.len(), 2);
+/// ```
+pub fn parse_urls(urls: &[&str]) -> Result<Vec<Deck>, YdkeError> {
+    urls.iter()
+        .map(|url| parse_url(url))
+        .collect()
+}
+
 /// Converts a Deck structure to a YDKE URL.
 /// 
-/// # Examples
+/// # Example
 /// 
 /// ```
 /// use ydke_parser::{Deck, to_url};
@@ -108,6 +128,36 @@ pub fn to_url(deck: &Deck) -> String {
         passcodes_to_base64(&deck.extra),
         passcodes_to_base64(&deck.side)
     )
+}
+
+/// Converts multiple Deck structures into a vector of YDKE URLs.
+/// 
+/// # Example
+/// 
+/// ```
+/// use ydke_parser::{Deck, to_urls};
+/// 
+/// let decks = vec![
+///     Deck {
+///         main: vec![26077387],
+///         extra: vec![],
+///         side: vec![],
+///     },
+///     Deck {
+///         main: vec![37351133],
+///         extra: vec![],
+///         side: vec![],
+///     },
+/// ];
+/// let urls = to_urls(&decks);
+/// assert_eq!(urls.len(), 2);
+/// assert!(urls[0].starts_with("ydke://"));
+/// assert!(urls[1].starts_with("ydke://"));
+/// ```
+pub fn to_urls(decks: &[Deck]) -> Vec<String> {
+    decks.iter()
+        .map(to_url)
+        .collect()
 }
 
 #[cfg(test)]

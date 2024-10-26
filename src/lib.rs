@@ -1,6 +1,6 @@
 //! A crate for parsing and generating YGOPro deck URLs in the YDKE format.
 //! 
-//! # Examples
+//! # Example
 //! 
 //! ```
 //! use ydke_parser::{Deck, parse_url, to_url};
@@ -30,5 +30,5 @@ mod utils;
 
 pub use error::YdkeError;
 pub use deck::Deck;
-pub use conversion::{parse_url, to_url};
+pub use conversion::{parse_url, parse_urls, to_url, to_urls};
 pub use utils::extract_urls;
